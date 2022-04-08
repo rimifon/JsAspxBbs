@@ -3,7 +3,7 @@ sys.debug = true;
 // sys.dbType = "Mono.Data.Sqlite";
 sys.dbPath = "|DataDirectory|Sqlite.db";
 sys.smtp = { host: "smtp.qq.com", user: "yourqq@qq.com", pass: "" };
-sys.wx = { id: "wx6f334128143af949", secret: "1616ab94128494f3f82935cef0acbe94" };
+sys.wx = { id: "wx0123456789abcdef", secret: "1234567890abcdef1234567890abcdef" };
 sys.mch = { id: "123456789", key: "1234567890abcdef1234567890abcdef", cert: "/cert/apiclient_cert.p12" };
 
 try { echo(invokeFunc("boot")((env("PATH_INFO").replace(env("SCRIPT_NAME"), "") || "/Index").split("/"))); }
