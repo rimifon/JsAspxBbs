@@ -6,7 +6,7 @@
 
 * 操作系统：Linux
 * 运行环境：Mono|Jexus + Aspx(JScript) + SQLite
-* 演示地址：[JsAspxBBS](http://bbs.fengyun.org)
+* 演示地址：[JsAspxBBS](http://228mi.com:1180)
 * 下载链接：[花了两天时间开发了一个论坛程序](http://bbs.fengyun.org/?r=topic/3)
 
 注意：此仓库源码为开发环境代码，仅支持在 Mono 5.2+ 环境运行，如需在其他环境上运行，请 [下载压缩包](http://228mi.com:1180/default.aspx/topic/2) 并按说明文档操作。
