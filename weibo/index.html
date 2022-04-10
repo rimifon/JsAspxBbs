@@ -85,7 +85,7 @@ input{ font: 4vw/6vw arial}
 		<div class="user xs">
 			<b class="tt fname icon fl">用</b>
 			<b class="tt nick">用户名</b>
-			<div class="tt posttime xxs">2022-04-06 &nbsp; 点击：<span class="tt hits">216</span></div>
+			<div class="tt posttime xxs">2022-04-06</div>
 		</div>
 		<div class="mt"><a target="_blank"><b class="tt title">请通过浏览器访问查看实际标题</b></a></div>
 		<div>
@@ -100,7 +100,7 @@ input{ font: 4vw/6vw arial}
 		<!-- 回复展示 -->
 		<div class="replies">
 			<div class="say tc">
-				<div class="flex"><input placeholder="请输入您的评论" class="auto" /><span class="xs">发表</span></div>
+				<div class="flex"><input placeholder="请输入您的评论" name="message" class="auto" /><span class="xs">发表</span></div>
 			</div>
 			<div class="ul mt">
 				<div class="list">
@@ -123,11 +123,11 @@ input{ font: 4vw/6vw arial}
 			<div class="tr xs gray"><a href="default.aspx/register">没有注册？</a></div>
 			<div class="flex">
 				<span>账号：</span>
-				<input class="auto" placeholder="请输入用户名" />
+				<input class="auto" name="user" placeholder="请输入用户名" />
 			</div>
 			<div class="flex">
 				<span>密码：</span>
-				<input type="password" class="auto" placeholder="请输入密码" />
+				<input type="password" name="pass" class="auto" placeholder="请输入密码" />
 			</div>
 			<p></p>
 		</div>
@@ -222,6 +222,7 @@ function TempPL(temp) {
 		var layPL = topic.querySelector(".replies");
 		data.tagSay = layPL.querySelector(".say");
 		data.tagIpt = data.tagSay.querySelector(".flex");
+		data.tagNum = topic.querySelector(".replynum");
 		data.tagSay.innerHTML = "";
 		
 		layPL.className = "hide";
@@ -261,6 +262,7 @@ function TempPL(temp) {
 				data.replying = false;
 				if(res.err) return alert(res.err);
 				data.lastid = 0; ipt.value = data.ul.innerHTML = "";
+				data.tagNum.innerHTML -= -1;
 				alert(res.msg); loadReplies(data);
 			});
 		};

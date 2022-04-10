@@ -497,7 +497,7 @@ function boot(route) {
 					where("a.topicid=@topicid").fetch(par);
 				if(!topic) return { err: "主题不存在" };
 				sys.online.setWeiZhi("forum/" + topic.forumid, "[" + topic.nick + "]" + topic.title, ss().sessId);
-				db().query("update topic set pv=pv+1 where topicid=@topicid", par);
+				db().none("update topic set pv=pv+1 where topicid=@topicid", par);
 				// 获取回复列表
 				var where ="a.topicid=@topicid and a.replyid!=@firstid";
 				par.firstid = ~~form("firstid");
