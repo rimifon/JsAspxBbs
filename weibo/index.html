@@ -1,6 +1,6 @@
 <!doctype html><html lang="zh"><head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>微博</title>
+<title>JsAspxBBS 微博版式</title>
 <base href="/" />
 <style type="text/css">
 body{ margin: 0mm; font: 4vw/6vw arial; background-color: #f5f7f8; color: #0b0b37 }
@@ -36,8 +36,8 @@ input{ font: 4vw/6vw arial}
 .weibo .fixed .message{ max-height: 25vh; overflow: hidden; margin-bottom: -25vw }
 .weibo .fixed .show{ position: relative }
 .weibo .fixed .show:before{ content: ""; background-image: linear-gradient(rgba(255, 255, 255, 0), #fff); display: block; height: 16vw }
-.weibo .fixed .show:after{ content: "查看更多"; display: block; text-align: center; padding: 2vw; background-color: #fff; color: #08c }
-.weibo .expand .show:after{ content: "折叠"; display: block; text-align: center; padding: 2vw; background-color: #fff; color: #08c }
+.weibo .fixed .show:after{ content: "查看更多"; display: block; text-align: center; padding: 2vw; background-color: #fff; color: #2469f6 }
+.weibo .expand .show:after{ content: "折叠"; display: block; text-align: center; padding: 2vw; background-color: #fff; color: #2469f6 }
 .code textarea{ width: 99%; height: 30vw; font: 4vw/6vw arial }
 .wait{ text-align: center; color: #8590a6; font: 3.5vw/20vh arial }
 </style></head><body>
@@ -57,7 +57,7 @@ input{ font: 4vw/6vw arial}
 <div class="mt bg ding xs">
 	<div class="flex">
 		<span>置顶</span>
-		<a class="tt title auto">帖子标题帖子标题帖子标题帖子标题帖子标题帖子标题</a>
+		<a class="tt title auto">实际的帖子标题需通过 fetch 加载</a>
 	</div>
 </div>
 <!-- 微博列表 -->
@@ -69,13 +69,13 @@ input{ font: 4vw/6vw arial}
 			<b class="tt nick">用户名</b>
 			<div class="tt date xxs">2022-04-06 &nbsp; 点击：<span class="tt hits">216</span></div>
 		</div>
-		<div class="mt"><a target="_blank"><b class="tt title">如何合并两个论坛的数据？</b></a></div>
+		<div class="mt"><a target="_blank"><b class="tt title">请通过浏览器访问查看实际标题</b></a></div>
 		<div>
-			<div class="tt message reply"></div>
+			<div class="tt message reply">您看到的是模板页面内容，真实数据需要使用浏览器加载才可查阅。</div>
 			<div class="show" onclick="toggleShow(parentNode)"></div>
 		</div>
 		<div class="flex xs">
-			<div>点击：<span class="tt pv">-</span></div>
+			<div>点击：<span class="tt pv">0</span></div>
 			<div class="auto"><a target="_blank">评论：<span class="tt replynum"></span></a></div>
 			<div><a class="tt btn1" target="_blank">分享</a></div>
 		</div>
