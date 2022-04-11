@@ -404,11 +404,22 @@ function boot(route) {
 				}
 
 				// 编辑帖子标题
-				,EditTitleDoc: [ "编辑帖子标题", "topicid, title", "topicid: int, 帖子 ID", "title: string, 标题" ]
+				,EditTitleDoc: [ "编辑帖子标题，或转移帖子到其他版块", "topicid, title, forumid", "topicid: int, 帖子 ID", "title: string, 标题", "forumid: int, 版块 ID" ]
 				,edittitle: function() {
 					if(~~me().roleid < 7) return { err: "没有操作权限" };
-					var par = { topicid: ~~form().topicid, title: form("title") };
-					db().update("topic", { title: par.title }, { topicid: par.topicid });
+					var par = new Object, where = { topicid: ~~form("topicid") };
+					if(form("title")) par.title = form("title");
+					if(form("forumid")) par.forumid = ~~form("forumid");
+					if(!par.title && !par.forumid) return { err: "没有操作内容" };
+					if(par.forumid) {
+						var topic = db().table("topic").where("topicid=@topicid").fetch(where);
+						if(!topic) return { err: "帖子不存在" };
+						// 减少原版块的贴子数和回复数
+						db().query("update forums set topicnum=topicnum-1, replynum=replynum-@replynum where forumid=@forumid", { replynum: topic.replynum, forumid: topic.forumid });
+						// 增加新版块的贴子数和回复数
+						db().query("update forums set topicnum=topicnum+1, replynum=replynum+@replynum where forumid=@forumid", { replynum: topic.replynum, forumid: par.forumid });
+					}
+					db().update("topic", par, where);
 					return { msg: "操作完成" };
 				}
 
