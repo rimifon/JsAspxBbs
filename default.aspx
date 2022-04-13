@@ -1,6 +1,6 @@
 <!-- #include file="AspxLib/api.aspx" --><%
 function boot(route) {
-	sys.name = "JsAspBBS";
+	sys.name = "JsAspxBBS";
 	sys.res = "/res/bbs/";
 	sys.dbPath = "|DataDirectory|JsAspxBBS.db";
 	sys.ns = "JsAspxBBS";
