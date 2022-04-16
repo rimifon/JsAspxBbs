@@ -37,7 +37,7 @@ function apidoc(root, route, noFmt) {
 		if(atob(auth.slice(6)) == sys.apiAuth) return true;
 		Response.Status = "401 Unauthorized";
 		Response.AddHeader("WWW-Authenticate", "Basic realm=\"API Doc Auth\"");
-		return !!dbg().trace(env("REMOTE_ADDR") + " 访问了 API 接口，但是没有授权");
+		return false;
 	}
 
 	// 跨域处理
