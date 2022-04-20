@@ -178,7 +178,7 @@ DbHelper.tojson = function(obj) {
 	function toTime() { return '"' + obj.ToString("yyyy-MM-dd HH:mm:ss") + '"'; }
 }
 DbHelper.fromjson = function(str) {
-	var regTag = /[\{\[\"ntf\d\.]/, i = 0, len = str.length;
+	var regTag = /[\{\[\"ntf\d\.\-]/, i = 0, len = str.length;
 	function newParse() {
 		var s = waitStr(regTag);
 		if(!s) return;
@@ -235,7 +235,7 @@ DbHelper.fromjson = function(str) {
 	function findNum(s) {
 		while(i < len) {
 			var _s = str.charAt(i++);
-			if(!/[\d\.]/.test(_s)) break;
+			if(!/[\d\.\-]/.test(_s)) break;
 			s += _s;
 		}
 		i--; return s - 0;
