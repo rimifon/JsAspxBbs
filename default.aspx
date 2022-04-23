@@ -398,7 +398,7 @@ function boot(route) {
 					var users = db().table("users"), par = new Object, page = ~~form("page") || 1;
 					if(form("user")) {
 						par.user = form("user");
-						users.where(isNaN(par.user) ? "charindex(@user, nick)>0" : "userid=@user");
+						users.where(isNaN(par.user) ? "instr(lower(nick), lower(@user))>0" : "userid=@user");
 					}
 					var res = users.page("userid desc", 10, page, par).select("userid, nick, jifen, fatie, roleid, regtime, lasttime").query();
 					return { list: res, pager: db().pager };
