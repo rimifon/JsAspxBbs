@@ -47,6 +47,10 @@ function apidoc(root, route, noFmt) {
 		if(sys.cors) Response.AddHeader("Access-Control-Allow-Headers", sys.cors);
 		Response.AddHeader("Access-Control-Allow-Origin", origin);
 		Response.AddHeader("Access-Control-Allow-Credentials", "true");
+		if(env("HTTPS") != "on") return;
+		if(Response.Cookies.Count < 1) return;
+		Response.Cookies[0].SameSite = "None";
+		Response.Cookies[0].Secure = true;
 	}
 	if(noFmt) return rs;
 	return rs instanceof Object ? tojson(rs) : rs;
