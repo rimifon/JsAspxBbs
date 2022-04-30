@@ -15,7 +15,7 @@ function boot(route) {
 			var forums = cc(sys.ns + "Home", function() {
 				var rows = db().table("forums a").where("a.pid=0 and a.state=1").
 					join("forums b on b.pid=a.forumid and b.state=1").
-					join("topic c on c.forumid=b.forumid and c.posttime>=datetime('now','start of day')").	// 统计各版块当天的贴子数
+					join("topic c on c.forumid=b.forumid and c.posttime>=datetime('now', 'localtime', 'start of day')").	// 统计各版块当天的贴子数
 					select("a.forumid as pid, b.forumid, count(c.topicid) as topicday").
 					groupby("a.forumid, b.forumid").astable("a").join("forums b on b.forumid=a.forumid").
 					join("reply c on c.replyid=b.replyid").join("topic d on d.topicid=c.topicid").
