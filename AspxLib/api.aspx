@@ -49,7 +49,7 @@ function apidoc(root, route, noFmt) {
 		Response.AddHeader("Access-Control-Allow-Credentials", "true");
 		if(sys.cors) Response.AddHeader("Access-Control-Allow-Headers", sys.cors);
 		if(env("HTTPS") != "on") return;
-		var cookies: Object = Response.Cookies;
+		var cookies = Response.Cookies;
 		if(cookies.Count < 1) return;
 		cookies[0].Path = "/; SameSite=None";
 		cookies[0].Secure = true;
