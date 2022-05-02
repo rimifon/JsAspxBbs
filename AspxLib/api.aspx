@@ -43,14 +43,16 @@ function apidoc(root, route, noFmt) {
 	// 跨域处理
 	function allowCORS(origin) {
 		if(!origin) return;
-		Response.AddHeader("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE");
-		if(sys.cors) Response.AddHeader("Access-Control-Allow-Headers", sys.cors);
 		Response.AddHeader("Access-Control-Allow-Origin", origin);
+		Response.AddHeader("Access-Control-Max-Age", "86400");
+		Response.AddHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
 		Response.AddHeader("Access-Control-Allow-Credentials", "true");
+		if(sys.cors) Response.AddHeader("Access-Control-Allow-Headers", sys.cors);
 		if(env("HTTPS") != "on") return;
-		if(Response.Cookies.Count < 1) return;
-		Response.Cookies[0].SameSite = "None";
-		Response.Cookies[0].Secure = true;
+		var cookies: Object = Response.Cookies;
+		if(cookies.Count < 1) return;
+		cookies[0].Path = "/; SameSite=None";
+		cookies[0].Secure = true;
 	}
 	if(noFmt) return rs;
 	return rs instanceof Object ? tojson(rs) : rs;
