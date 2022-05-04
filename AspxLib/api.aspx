@@ -45,9 +45,9 @@ function apidoc(root, route, noFmt) {
 		if(!origin) return;
 		Response.AddHeader("Access-Control-Allow-Origin", origin);
 		Response.AddHeader("Access-Control-Max-Age", "86400");
+		Response.AddHeader("Access-Control-Allow-Headers", "*");
 		Response.AddHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
 		Response.AddHeader("Access-Control-Allow-Credentials", "true");
-		if(sys.cors) Response.AddHeader("Access-Control-Allow-Headers", sys.cors);
 		if(env("HTTPS") != "on") return;
 		var cookies = Response.Cookies;
 		if(cookies.Count < 1) return;
